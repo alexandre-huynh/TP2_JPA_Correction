@@ -1,0 +1,64 @@
+package com.example.jpa;
+
+import javax.persistence.*;
+// La table personne
+@Entity
+public class Person {
+    private long id;
+    private String name;
+    private int age;
+    private City city;
+
+    public Person(){
+        super();
+    }
+
+    public Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    @ManyToOne
+    public City getCity(){
+        return this.city;
+    }
+
+    public void setCity(City city){
+        this.city = city;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId(){
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
